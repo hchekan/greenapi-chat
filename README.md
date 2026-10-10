@@ -1,4 +1,4 @@
-# greenapi-chat
+# greenapi-chat для WhatsApp
 
 ## Требования
 
