@@ -1,0 +1,45 @@
+.settingsPage {
+  //width: 410px;
+  background: #17181c;
+  border-right: 1px solid #ffffff0f;
+  display: flex;
+  flex-direction: row;
+}
+
+.settingsMain {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px 20px 0px 20px;
+
+  h1 {
+    font-size: 24px;
+  }
+}
+
+.splitter {
+  position: relative;
+  z-index: 1;
+  width: 5px;
+  height: 100vh;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: col-resize;
+  flex-shrink: 0;
+
+
+  &:hover::after,
+  &:active::after {
+    background: #2196f3;
+  }
+}
+

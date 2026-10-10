@@ -1,0 +1,57 @@
+.chatInputContainer {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0px;
+}
+
+.chatInput {
+  display: flex;
+  align-items: center;
+  background: #17181c;
+  border-radius: 22px;
+  padding: 8px 16px;
+  gap: 8px;
+  max-width: 700px;
+  width: 100%;
+  border: 1px solid #ffffff0f;
+}
+
+.inputField {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 15px;
+  padding: 8px 0;
+  font-family: inherit;
+  font-weight: 400;
+}
+
+.inputField::placeholder {
+  color: #8b9eb0;
+}
+
+.sendButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    fill: #ffffff85;
+  }
+
+  &:hover {
+    .icon {
+      fill: #ffffffc4;
+    }
+  }
+}
+
+.inputActions {
+  display: flex;
+  gap: 4px;
+}

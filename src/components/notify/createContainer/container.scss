@@ -1,0 +1,12 @@
+.react-notifications-container {
+  position: fixed;
+  top: 16px;
+  z-index: 10000;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  left: 50% !important;
+  transform: translateX(-50%);
+}

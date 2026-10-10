@@ -1,0 +1,149 @@
+.chatMessagesContainer {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0px;
+  height: 100%;
+}
+
+.chatMessages {
+  max-width: 700px;
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.emptyChat {
+  margin: auto;
+  text-align: center;
+  padding: 40px;
+}
+
+.emptyChatIcon {
+  width: 80px;
+  height: 80px;
+  background: #2b5278;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.emptyChatTitle {
+  color: white;
+  font-size: 20px;
+  margin: 0 0 8px;
+}
+
+.dateSeparator {
+  text-align: center;
+  margin: 16px 0;
+}
+
+.dateSeparator span {
+  background: #29394b;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+.message {
+  display: flex;
+  margin: 2px 0;
+}
+
+.messageOwn {
+  justify-content: flex-end;
+}
+
+.messageOther {
+  justify-content: flex-start;
+}
+
+.messageBubble {
+  max-width: 65%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.messageOwn .messageBubble {
+  background: #7b68ee;
+  color: white;
+}
+
+.messageOther .messageBubble {
+  background: #29394b;
+  color: white;
+}
+
+.messageText {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.messageDeleted {
+  font-size: 15px;
+  line-height: 1.4;
+  color: #ececec;
+  font-style: italic;
+}
+
+.messageStatusTime {
+  float: right;
+}
+
+.messageTime {
+  font-size: 11px;
+  color: #ffffff99;
+  margin-left: 8px;
+  margin-top: 4px;
+}
+
+.contextMenu {
+  position: fixed;
+  z-index: 1000;
+  background: #2a2a2e;
+  border: 1px solid #3a3a3e;
+  border-radius: 8px;
+  padding: 4px 0;
+  min-width: 120px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.15s ease;
+}
+
+.contextMenuItem {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+
+  &:hover {
+    background: rgba(255, 77, 77, 0.1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+

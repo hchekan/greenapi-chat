@@ -1,0 +1,56 @@
+.sidebar {
+  width: 80px;
+  background: #17181c;
+  border-right: 1px solid #ffffff0f;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.menuItem {
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 2px;
+  background: transparent;
+  border: none;
+  color: #ffffff85;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+
+  &:hover {
+    color: #ffffffc4;
+  }
+
+  &.active {
+    color: #ffffffe7;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+  }
+
+  .label {
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+}
+
+.settingsBtn {
+  margin-top: auto;
+}

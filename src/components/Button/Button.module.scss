@@ -1,0 +1,152 @@
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+/* ================= WIDTH ================= */
+
+.full {
+  width: 100%;
+}
+
+/* ================= ICON ================= */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leftIcon {
+  margin-right: 4px;
+}
+
+.rightIcon {
+  margin-left: 4px;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ================= ICON ONLY ================= */
+.iconOnly {
+  padding: 6px;
+}
+
+.iconOnly.sm {
+  padding: 4px;
+}
+
+.iconOnly.md {
+  padding: 6px;
+}
+
+.iconOnly.lg {
+  padding: 10px;
+}
+
+/* ================= SIZE ================= */
+.sm {
+  padding: 6px 12px;
+  font-size: 12px;
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.md {
+  padding: 8px 16px;
+  font-size: 14px;
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.lg {
+  padding: 12px 22px;
+  font-size: 15px;
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ================= WEIGHT ================= */
+.normal {
+  font-weight: 400;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+/* ================= VARIANTS ================= */
+.filled {
+  background: var(--btn-bg);
+  color: var(--text-on-filled);
+
+  &:hover:not(.disabled) {
+    background: var(--btn-bg-hover);
+  }
+}
+
+.outline {
+  background: transparent;
+  border-color: var(--btn-bg);
+  color: var(--btn-bg);
+
+  &:hover:not(.disabled) {
+    background: var(--bg-ghost-hover);
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: var(--btn-bg);
+
+  &:hover:not(.disabled) {
+    background: var(--bg-ghost-hover);
+  }
+}
+
+/* ================= STATES ================= */
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading {
+  cursor: wait;
+}
+
+/* ================= SPINNER ================= */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

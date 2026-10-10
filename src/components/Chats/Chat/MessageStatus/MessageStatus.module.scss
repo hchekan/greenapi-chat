@@ -1,0 +1,25 @@
+.messageStatus {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.statusSend {
+  color: #fff; 
+}
+
+.statusDelivered {
+  color: #fff;
+}
+
+.statusRead {
+  color: #fff;
+}
+
+.icon {
+  path {
+    stroke-width: 1px;
+    stroke: currentColor;
+  }
+}
