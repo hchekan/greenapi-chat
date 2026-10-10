@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useMessageStore } from "@store/messages/messages.store";
 import { useUserStore } from "@store/user/user.store";
 import SendIcon from "@icons/send.svg?react";
@@ -15,6 +15,15 @@ const ChatInput = ({ chatId }: ChatInputProps) => {
   const { sendMessage } = useMessageStore();
 
   const [text, setText] = useState("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    const el = textareaRef.current;
+    if (!el) return;
+
+    el.style.height = "auto"; 
+    el.style.height = `${Math.min(el.scrollHeight, 150)}px`;
+  }, [text]);
 
   const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
@@ -30,19 +39,25 @@ const ChatInput = ({ chatId }: ChatInputProps) => {
       });
 
       setText("");
+      if (textareaRef.current) {
+        textareaRef.current.style.height = "auto";
+      }
     }
   };
 
   return (
     <div className={styles.chatInputContainer}>
       <form className={styles.chatInput} onSubmit={handleSubmit}>
-        <input
-          type="text"
+
+        <textarea
+          ref={textareaRef}
           placeholder="Сообщение"
           value={text}
           onChange={(e) => setText(e.target.value)}
+          rows={1}
           className={styles.inputField}
         />
+
         <div className={styles.inputActions}>
           {text.trim() && (
             <button type="submit" className={styles.sendButton}>
