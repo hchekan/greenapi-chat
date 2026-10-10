@@ -64,24 +64,26 @@ const ChatMessages = ({ chat }: ChatMessagesProps) => {
 
   return (
     <div className={styles.chatMessagesContainer}>
-      <div className={styles.chatMessages}>
-        {messagesByChat.data.map((msg: Message, index: number) => {
-          const currentDate = getDate(msg.timestamp);
-          const showDate =
-            index === 0 ||
-            currentDate !== getDate(messagesByChat.data[index - 1].timestamp);
+      <div className={styles.chatMessagesBlock}>
+        <div className={styles.chatMessages}>
+          {messagesByChat.data.map((msg: Message, index: number) => {
+            const currentDate = getDate(msg.timestamp);
+            const showDate =
+              index === 0 ||
+              currentDate !== getDate(messagesByChat.data[index - 1].timestamp);
 
-          return (
-            <MessageItem
-              key={msg.id}
-              currentDate={currentDate}
-              showDate={showDate}
-              msg={msg}
-              isOwn={msg.senderId === user.id}
-              onDeleteMessage={handleDeleteMessage}
-            />
-          );
-        })}
+            return (
+              <MessageItem
+                key={msg.id}
+                currentDate={currentDate}
+                showDate={showDate}
+                msg={msg}
+                isOwn={msg.senderId === user.id}
+                onDeleteMessage={handleDeleteMessage}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
