@@ -6,6 +6,8 @@ export const chatRepository = {
 
   create: (chat: Chat) => db.chats.add(chat),
 
+  update: (chat: Chat) => db.chats.put(chat),
+
   delete: (chatId: string) => db.chats.where('chatId').equals(chatId).delete(),
 
 }

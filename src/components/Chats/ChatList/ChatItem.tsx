@@ -7,14 +7,16 @@ import styles from "./ChatList.module.scss";
 import { formatSmartDate } from '@/utils/formatDate';
 import MessageStatus from "../Chat/MessageStatus";
 import NotifyIcon from "@icons/notify.svg?react";
+import type { Chat } from "@/types/chats.types";
 
 interface ChatItemProps {
   chatId: string;
   userId: string;
   onDeleteChat: (chatId: string) => void;
+  onRenameChat: (chat: Chat) => void;
 }
 
-const ChatItem = ({ chatId, userId, onDeleteChat }: ChatItemProps) => {
+const ChatItem = ({ chatId, userId, onDeleteChat, onRenameChat }: ChatItemProps) => {
   const chat = useChatById(chatId);
   const lastMessage = useLastMessageByChatId(chatId);
   const { onOpenChat } = useOutletContext<LayoutContextType>();
@@ -63,6 +65,11 @@ const ChatItem = ({ chatId, userId, onDeleteChat }: ChatItemProps) => {
     setContextMenu(null);
   };
 
+  const handleRename = () => {
+    onRenameChat(chat);
+    setContextMenu(null);
+  }
+
   return (<>
     <li
       key={chatId}
@@ -98,7 +105,10 @@ const ChatItem = ({ chatId, userId, onDeleteChat }: ChatItemProps) => {
         className={styles.contextMenu}
         style={{ top: contextMenu.y, left: contextMenu.x }}
       >
-        <button className={styles.contextMenuItem} onClick={handleDelete}>
+        <button className={`${styles.contextMenuItemBase} ${styles.contextMenuItem}`} onClick={handleRename}>
+          Переименовать чат
+        </button>
+        <button className={`${styles.contextMenuItemBase} ${styles.contextMenuItemDelete}`} onClick={handleDelete}>
           Удалить чат
         </button>
       </div>

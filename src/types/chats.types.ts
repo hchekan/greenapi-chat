@@ -15,6 +15,7 @@ export interface ChatStore {
 
   loadChats: (id: string) => Promise<void>;
   createChat: (chat: Chat) => Promise<Chat | null>;
+  renameChat: (chat: Chat) => Promise<Chat | null>;
   deleteChat: (chatId: string) => Promise<void>;
   clearChats: () => void;
 }

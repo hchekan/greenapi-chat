@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import type { LayoutContextType } from "@components/App/AppLayout";
 import useResizable from "@hooks/useResizable";
@@ -8,13 +9,17 @@ import { useUserStore } from "@store/user/user.store";
 
 import styles from "./ChatList.module.scss";
 import ChatItem from "./ChatItem";
+import RenameChat from "../RenameChat";
+import type { Chat } from "@/types/chats.types";
 
 const ChatList = () => {
   const userId = useUserStore((state) => state.user?.id);
   const { onCloseChat } = useOutletContext<LayoutContextType>();
 
+  const [ chat, setChat ] = useState<Chat | null>(null);
   const { isLoaded, error, chatIds, deleteChat } = useChatStore();
   const { isOpen, open, close } = useModal();
+  const { isOpen: isOpenRename, open: openRename, close: closeRename } = useModal();
   const { width: sidebarWidth, handleMouseDown } = useResizable({
     minWidth: 300,
     maxWidth: 600,
@@ -27,9 +32,15 @@ const ChatList = () => {
     await deleteChat(chatId);
   };
 
+   const handleRenameChat = async (chat: Chat) => {
+     setChat(chat);
+     openRename();
+  };
+
   return (
     <aside className={styles.chatsPage} style={{ width: sidebarWidth + "px" }}>
       <CreateChat isOpen={isOpen} onClose={close} />
+      {chat && <RenameChat chat={chat} isOpen={isOpenRename} onClose={closeRename} />}
 
       <div className={styles.chatsMain}>
         <div className={styles.header}>
@@ -61,6 +72,7 @@ const ChatList = () => {
                   chatId={id}
                   userId={userId || ""}
                   onDeleteChat={handleDeleteChat}
+                  onRenameChat={handleRenameChat}
                 />
               ))}
             </ul>

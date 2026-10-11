@@ -18,7 +18,7 @@ const ChatMessages = ({ chat }: ChatMessagesProps) => {
   const { changeStatusMessage } = useMessageStore();
 
   useEffect(() => {
-    if (messagesByChat && user) {
+    if (messagesByChat && user && messagesByChat.data?.length>0) {
       const messages = messagesByChat.data;
       const lengthMessages = messages.length;
       const isNew = messages[lengthMessages - 1].status === "new";

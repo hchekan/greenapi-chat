@@ -58,6 +58,30 @@ export const useChatStore = create<ChatStore>((set, get) => ({
     }
   },
 
+  renameChat: async (chat) => {
+    try {
+      await chatRepository.update(chat);
+
+      set((state) => ({
+        error: null,
+        chatsById: {
+          ...state.chatsById,
+          [chat.chatId]: chat,
+        },
+      }));
+
+      return chat;
+    } catch (error) {
+      console.error("Failed to rename chat:", error);
+
+      set({
+        error: "Не удалось переименовать чат",
+      });
+
+      return null;
+    }
+  },
+
   deleteChat: async (chatId) => {
     try {
       await chatRepository.delete(chatId);
