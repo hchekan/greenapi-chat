@@ -18,10 +18,12 @@ const ChatMessages = ({ chat }: ChatMessagesProps) => {
   const { changeStatusMessage } = useMessageStore();
 
   useEffect(() => {
-    if (messagesByChat) {
+    if (messagesByChat && user) {
       const messages = messagesByChat.data;
       const lengthMessages = messages.length;
-      if (lengthMessages > 0 && messages[lengthMessages - 1].status === "new") {
+      const isNew = messages[lengthMessages - 1].status === "new";
+      const isNotOwn = messages[lengthMessages - 1].senderId !== user.id;
+      if (lengthMessages > 0 && isNew && isNotOwn) {
         const lastMes = messages[lengthMessages - 1];
 
         const changeStatus = async () => {
