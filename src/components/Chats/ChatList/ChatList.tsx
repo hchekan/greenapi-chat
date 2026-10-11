@@ -33,14 +33,19 @@ const ChatList = () => {
   };
 
    const handleRenameChat = async (chat: Chat) => {
-     setChat(chat);
-     openRename();
+    setChat(chat);
+    openRename();
   };
+
+  const onCloseRename = () => {
+    setChat(null);
+    closeRename();
+  }
 
   return (
     <aside className={styles.chatsPage} style={{ width: sidebarWidth + "px" }}>
       <CreateChat isOpen={isOpen} onClose={close} />
-      {chat && <RenameChat chat={chat} isOpen={isOpenRename} onClose={closeRename} />}
+      {chat && <RenameChat chat={chat} isOpen={isOpenRename} onClose={onCloseRename} />}
 
       <div className={styles.chatsMain}>
         <div className={styles.header}>
